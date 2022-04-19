@@ -50,8 +50,8 @@ const playRound = function(playerSelection) {
         else if (playerSelection === 'rock' && computerSelection === 'scissors' ||
             playerSelection === 'paper' && computerSelection === 'rock' ||
             playerSelection === 'scissors' && computerSelection === 'paper') {
-                updateScore('player');
-                animateElement('#playerScore');
+            updateScore('player');
+            animateElement('#playerScore');
             }
         else {
             updateScore('computer');
@@ -65,20 +65,22 @@ const playRound = function(playerSelection) {
 /* Update score */
 
 function updateScore(winner) {
-   
-   // if (!isGameOver()) {
-        
-        if (winner === 'player') {
-            player++;
-            playerScore.textContent = player;
-            log.textContent = 'You won!';
-        }
-        else if (winner === 'computer') {
-            cpu++;
-            cpuScore.textContent = cpu;
-            log.textContent = 'You Lost!';
-        }
-  //  }
+    if (winner === 'player') {
+        const pScore = document.querySelector('#playerScore p');
+        player++;
+        pScore.style.color = 'rgb(230, 212, 114)';
+        playerScore.textContent = player;
+        log.textContent = 'You won!';
+        setTimeout(() => { pScore.style.color = 'rgb(247, 243, 223)'}, 600);
+    }
+    else if (winner === 'computer') {
+        const pcScore = document.querySelector('#cpuScore p');
+        cpu++;
+        pcScore.style.color = 'rgb(230, 212, 114)';
+        cpuScore.textContent = cpu;
+        log.textContent = 'You Lost!';
+        setTimeout(() => { pcScore.style.color = 'rgb(247, 243, 223)'}, 600);
+    }
 }
 
 const startGame = function() {

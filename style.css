@@ -12,15 +12,13 @@ body {
     padding: 4vh 5vw;
     background-color: rgb(43, 43, 43);
     font-family: 'Amatic SC', cursive;
-    
 }
 
 header {
     font-family: 'Permanent Marker', cursive;
-    
     text-align: center;
-
 }
+
 header h1 {
     font-size: 8vh;
     font-weight: bold;
@@ -28,20 +26,11 @@ header h1 {
     padding-bottom: 15vh;
 }
 
-
-
-
-
-
-
-#score {
-    
+#score {  
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 10vh;
-   
-    
 }
 
 #cpuScore, #playerScore {
@@ -52,7 +41,6 @@ header h1 {
     align-items: center;
     flex-direction: column;
     width: 12vw;
-    
     border: 2px solid rgb(131, 131, 131);
     border-radius: 5px;
     background-color: rgb(83, 83, 83);
@@ -63,39 +51,30 @@ header h1 {
     font-size: 8vh;
 }
 
-
 .content {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 0;
-    /* border: 2px solid rgb(131, 131, 131);
-    border-radius: 10px; */
     background-color: rgb(43, 43, 43);
-    
-    
-    /* width: 30vw;
-    height: 15vh; */
     text-align: center;
 }
 
 .message {
     font-size: 10vh;
     color:rgb(247, 243, 223);
-text-align: center;
+    text-align: center;
 }
 
 .log {
     display: flex;
-    justify-content: center;
-    
-    
+    justify-content: center;   
 }
 
-#items {
-    padding: 5vh 0vh;
-}
 
+#playerButtons {
+    margin-right: auto;
+}
 
 #playerButtons div, #cpuButtons div {
     flex: 1;  
@@ -106,13 +85,13 @@ text-align: center;
     background-size: cover;
     border: 2px solid rgb(131, 131, 131);
     border-radius: 5px;
-    background-color: rgb(94, 94, 94);
-    
+    background-color: rgb(94, 94, 94);   
 }
 
 #playerButtons div:hover {
     -webkit-animation: animation 1000ms linear both;
     animation: animation 1000ms linear both;
+    background-color: rgb(49, 49, 49);
 }
 
 .animation {
@@ -121,8 +100,6 @@ text-align: center;
     
 }
 
-
-
 div.paper {
     flex-shrink: 0;
     background-color: rgb(253, 253, 253);
@@ -130,17 +107,16 @@ div.paper {
 
 #items {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-   
+    justify-content: center;
+    flex-wrap: wrap; 
+    padding: 5vh 10vh;
 }
 
 #playerButtons, #cpuButtons   {
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 5px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
 .start {
@@ -169,11 +145,16 @@ button.game:hover {
     animation: animation 1000ms linear both;
 }
 
+@media (max-width: 1000px) {
+    #cpuButtons {
+        visibility: hidden;
+    }
+    #playerButtons {
+        margin-right: 0;
+    }
+}
 
-
-
-  
-  @keyframes animation { 
+@keyframes animation { 
     0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
     3.4% { transform: matrix3d(1.063, 0, 0, 0, 0, 1.081, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
     4.7% { transform: matrix3d(1.09, 0, 0, 0, 0, 1.12, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
@@ -200,6 +181,6 @@ button.game:hover {
     85.49% { transform: matrix3d(1.2, 0, 0, 0, 0, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
     90.69% { transform: matrix3d(1.2, 0, 0, 0, 0, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
     100% { transform: matrix3d(1.2, 0, 0, 0, 0, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
-  }
+}
   
   
