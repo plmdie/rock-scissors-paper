@@ -40,6 +40,7 @@ function animateElement(element) {
 
 const playRound = function(playerSelection) {
     if (!isGameOver()) {
+        
         computerSelection = computerPlay(); 
         let winner;
 
@@ -83,6 +84,7 @@ function updateScore(winner) {
 const startGame = function() {
     if (buttonsAdded === 0) addButtons();
     player = cpu = 0;
+    document.querySelector(`button.game`).style.visibility = "hidden";2
     playerScore.textContent = player;
     cpuScore.textContent = cpu;
     log.style.fontSize = "12vh";        
@@ -119,6 +121,7 @@ function isGameOver() {
         if (player === 5) log.textContent = 'You won the game!';
         else if (cpu === 5) log.textContent = 'You lost the game!';
         btnGame.textContent = 'Restart Game';
+        document.querySelector(`button.game`).style.visibility = "visible";
         btnGame.addEventListener('click', startGame);
         return true;
     }

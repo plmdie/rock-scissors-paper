@@ -152,6 +152,7 @@ gap: 5px;
 }
 
 button.game {
+    visibility: hidden;
     color: rgb(247, 243, 223);
     font-size: 3vh;
     width: 10vw;
@@ -162,26 +163,14 @@ button.game {
     font-family: 'Amatic SC', cursive;
 }
 
-
-
-
-
-  
- 
-
-
-  
-  /* Generated with Bounce.js. Edit at http://bouncejs.com#%7Bs%3A%5B%7BT%3A%22c%22%2Ce%3A%22b%22%2Cd%3A1000%2CD%3A0%2Cf%3A%7Bx%3A1%2Cy%3A1%7D%2Ct%3A%7Bx%3A2%2Cy%3A1%7D%2Cs%3A1%2Cb%3A4%7D%2C%7BT%3A%22c%22%2Ce%3A%22b%22%2Cd%3A1000%2CD%3A0%2Cf%3A%7Bx%3A1%2Cy%3A1%7D%2Ct%3A%7Bx%3A1%2Cy%3A2%7D%2Cs%3A1%2Cb%3A6%7D%5D%7D */
-  
-  
-
-.animation-target {
+button.game:hover {
+    background-color: rgb(39, 39, 39);
     -webkit-animation: animation 1000ms linear both;
     animation: animation 1000ms linear both;
-  }
-  
-  /* Generated with Bounce.js. Edit at http://bouncejs.com#%7Bs%3A%5B%7BT%3A%22c%22%2Ce%3A%22b%22%2Cd%3A1000%2CD%3A0%2Cf%3A%7Bx%3A1%2Cy%3A1%7D%2Ct%3A%7Bx%3A1.5%2Cy%3A1%7D%2Cs%3A1%2Cb%3A4%7D%2C%7BT%3A%22c%22%2Ce%3A%22b%22%2Cd%3A1000%2CD%3A0%2Cf%3A%7Bx%3A1%2Cy%3A1%7D%2Ct%3A%7Bx%3A1%2Cy%3A1.5%7D%2Cs%3A1%2Cb%3A6%7D%5D%7D */
-  
+}
+
+
+
 
   
   @keyframes animation { 
