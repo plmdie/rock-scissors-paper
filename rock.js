@@ -95,20 +95,16 @@ const startGame = function() {
 
 const addButtons = function () {
    
-    const btnPlayer = document.querySelectorAll('#playerButtons, #cpuButtons');
-    let i = 0;   
+    const btnPlayer = document.querySelectorAll('#playerButtons, #cpuButtons'); 
     btnPlayer.forEach(el => {
-        i++; 
         sel.forEach(item => {
             const items = document.createElement("div");
             
             items.className = `${item}`;
             el.appendChild(items);
-
             el.querySelector(`.${item}`).style.backgroundImage = `url('./img/${item}.png')`;
             
-            //fazer modificação aqui
-            if (i === 1) {
+            if (el.id === 'playerButtons') {
             document.querySelector(`#playerButtons .${item}`).addEventListener('click', () => playRound(`${item}`));
             }
         });
