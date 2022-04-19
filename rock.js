@@ -1,109 +1,128 @@
+const cpuScore = document.querySelector('#cpuScore p');
+const playerScore = document.querySelector('#playerScore p');
+
+const btnGame = document.querySelector('.game');
+const log = document.querySelector('.message');
+const sel = ['rock', 'paper', 'scissors'];
+
+let run = 1;
+
+
+let cpu = 0;
+let player = 0;
+let buttonsAdded = 0;
 /* Get computer choice randomly */
 
 function computerPlay() {
     let computerChoice = Math.floor(Math.random() * 3);
+    animateCpuButtons(computerChoice);
     switch (computerChoice) {
         case 0: return 'rock';
-        case 1: return 'scissors'; 
-        case 2: return 'paper';  
+        case 1: return 'paper'; 
+        case 2: return 'scissors';  
     }
 }
 
-/* Prompt player for their choice */
-
-function playerPlay() {
-    let playerChoice = prompt('Choose with what you want to player, Rock Scissors or Paper:');
-    playerChoice = playerChoice.toLowerCase();
-    return playerChoice;
+function animateCpuButtons(cpuChoice) {
+    const element = document.querySelector(`#cpuButtons .${sel[cpuChoice]}`);
+    element.classList.add(`animation`);
+    setTimeout(() => { element.classList.remove(`animation`)}, 500);
 }
 
-/* Play individual round and return winner */
-
-function playRound(playerSelection, computerSelection) {
-    switch (playerSelection) {
-        case 'rock': 
-            switch(computerSelection) {
-                case 'rock': 
-                    console.log('The game is tied, both players choosed Rock.');
-                    return 'tie';
-                
-                case 'scissors': 
-                    console.log('The player has won, Rock smashes Scissors.');
-                    return 'player';
-                
-                case 'paper': 
-                    console.log('The computer has won, Paper wraps the Rock.');
-                    return 'computer';
-            }
-        case 'scissors': 
-            switch(computerSelection) {
-                case 'rock': 
-                    console.log('The computer has won, Rock smashes Scissors.');
-                    return 'computer';
-                
-                case 'scissors': 
-                    console.log('The game is tied, both players choosed Scissors.');
-                    return 'tie';
-                
-                case 'paper': 
-                    console.log('The players has won, Scissors cut Paper.');
-                    return 'player';
-                
-            }
-        
-        case 'paper': 
-            switch(computerSelection) {
-                case 'rock': 
-                    console.log('The player has won, Paper wraps the Rock.');
-                    return 'player';
-                
-                case 'scissors': 
-                    console.log('The computer has won,  Scissors cut Paper.');
-                    return 'computer';
-                
-                case 'paper': 
-                    console.log('The game is tied, both players choosed Paper.');
-                    return 'tie';
-                
-            }
-        
-    }
-    
+function animateElement(element) {
+    const el = document.querySelector(element)
+    console.log(element);
+    el.classList.add(`animation`);
+    setTimeout(() => { el.classList.remove(`animation`)}, 500);
 }
 
-/* Counting each player score and announce winner */
+/* Play single round */
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
+const playRound = function(playerSelection) {
+    if (!isGameOver()) {
+        computerSelection = computerPlay(); 
+        let winner;
 
-    for (let i = 1; i <= 5; i++) {
-        let playerSelection = playerPlay();
-        let computerSelection = computerPlay();
-
-        /* Show Round # and players choice */
-        console.log(`Round ${i}`);
-        console.log(`Player choosed ${playerSelection}`);
-        console.log(`Computer choosed ${computerSelection}`);
-        
-        /* Get result of round */
-        let result = playRound(playerSelection, computerSelection);
-        /* Count score */
-        if (result === 'computer') { computerScore += 1; }
-        if (result === 'player') { playerScore += 1; }
-        console.log(`Computer Score ${computerScore}`);
-        console.log(`Player Score ${playerScore}`);
-
-        /* Stating game victory */ 
-        if (i === 5) {
-            if (computerScore > playerScore) { console.log(`Computer won the game. ${computerScore} rounds.`); }
-            else if (playerScore > computerScore) {
-                console.log(`Player won ${playerScore} rounds.`);
-                console.log(`round: ${i}`);
+        if (playerSelection === computerSelection) {
+            log.textContent = 'The game is tied.';
+        } 
+        else if (playerSelection === 'rock' && computerSelection === 'scissors' ||
+            playerSelection === 'paper' && computerSelection === 'rock' ||
+            playerSelection === 'scissors' && computerSelection === 'paper') {
+                updateScore('player');
+                animateElement('#playerScore');
             }
-            else {console.log(`The game was tied, ${computerScore} vs ${playerScore}.`);}
-        }   
+        else {
+            updateScore('computer');
+            animateElement('#cpuScore');
+        }
     } 
+    
+    isGameOver();
+}   
+
+/* Update score */
+
+function updateScore(winner) {
+   
+   // if (!isGameOver()) {
+        
+        if (winner === 'player') {
+            player++;
+            playerScore.textContent = player;
+            log.textContent = 'You won!';
+        }
+        else if (winner === 'computer') {
+            cpu++;
+            cpuScore.textContent = cpu;
+            log.textContent = 'You Lost!';
+        }
+  //  }
 }
 
-game();
+const startGame = function() {
+    if (buttonsAdded === 0) addButtons();
+    player = cpu = 0;
+    playerScore.textContent = player;
+    cpuScore.textContent = cpu;
+    log.style.fontSize = "12vh";        
+    log.textContent = 'Choose wisely!';
+}
+
+const addButtons = function () {
+   
+    const btnPlayer = document.querySelectorAll('#playerButtons, #cpuButtons');
+    let i = 0;   
+    btnPlayer.forEach(el => {
+        i++; 
+        sel.forEach(item => {
+            const items = document.createElement("div");
+            
+            items.className = `${item}`;
+            el.appendChild(items);
+
+            el.querySelector(`.${item}`).style.backgroundImage = `url('./img/${item}.png')`;
+            
+            //fazer modificação aqui
+            if (i === 1) {
+            document.querySelector(`#playerButtons .${item}`).addEventListener('click', () => playRound(`${item}`));
+            }
+        });
+    });
+
+    buttonsAdded = 1; 
+} 
+
+
+function isGameOver() {
+    if (player === 5 || cpu === 5) {
+        if (player === 5) log.textContent = 'You won the game!';
+        else if (cpu === 5) log.textContent = 'You lost the game!';
+        btnGame.textContent = 'Restart Game';
+        btnGame.addEventListener('click', startGame);
+        return true;
+    }
+    return false;
+}
+
+startGame();
