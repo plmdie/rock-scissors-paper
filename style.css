@@ -215,7 +215,7 @@ button.game:hover {
 }
 
 #footer img:hover {
-    transform: rotate(360deg);
+    transform: rotateY(720deg);
     cursor: pointer;
 }
 
