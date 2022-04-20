@@ -9,20 +9,29 @@
 }
 
 body {
-    padding: 4vh 5vw;
+    padding: 2vh 5vw;
     background-color: rgb(43, 43, 43);
     font-family: 'Amatic SC', cursive;
+}
+
+.img-small {
+    display: none;
 }
 
 header {
     font-family: 'Permanent Marker', cursive;
     text-align: center;
+    padding-bottom: 10vh;
 }
 
-header h1 {
+header img {
+    width: 80%;
+}
+
+ /* header h1 {
     font-size: 8vh;
     font-weight: bold;
-    /* color:rgb(230, 212, 114); */
+   
     background-color: rgb(230, 212, 114);
     background-image: linear-gradient(90deg, rgb(246, 87, 10) 10%, rgb(230, 212, 114) 18%, rgb(141, 81, 3) 100%);
     background-size: 100%;
@@ -30,10 +39,10 @@ header h1 {
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent; 
     -moz-text-fill-color: transparent;
-    /* color: linear-gradient(90deg, rgba(246,87,10,1) 0%, rgba(230,212,114,1) 18%, rgba(255,143,0,1) 100%); */
+
     padding-bottom: 15vh;
     
-}
+}  */
 
 #score {  
     display: flex;
@@ -44,8 +53,6 @@ header h1 {
 
 #cpuScore, #playerScore {
     font-size: 5vh;
-    font-weight: bold;
-    color: rgb(247, 243, 223);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -58,6 +65,14 @@ header h1 {
 #cpuScore p, #playerScore p {
     color: rgb(247, 243, 223);
     font-size: 8vh;
+    font-weight: bold;
+    text-align: center;
+}
+
+#cpuScore h5, #playerScore h5 {
+    
+    color: rgb(247, 243, 223);
+    text-align: center;
 }
 
 .content {
@@ -87,8 +102,8 @@ header h1 {
 
 #playerButtons div, #cpuButtons div {
     flex: 1;  
-    width: 15vh;
-    height: 15vh;  
+    width: 16vh;
+    height: 16vh;  
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -126,7 +141,7 @@ div.paper {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 15px;
 }
 
 .start {
@@ -156,12 +171,65 @@ button.game:hover {
     animation: animation 1000ms linear both;
 }
 
-@media (max-width: 1000px) {
-    #cpuButtons {
-        visibility: hidden;
+@media (max-width: 1430px) {
+    #playerButtons div, #cpuButtons div {
+        width: 15vh;
+        height: 15vh;
     }
+
+    #cpuScore {
+        font-size: 4vh;
+    }
+}
+
+@media (max-width: 1250px) {
+    #playerButtons div, #cpuButtons div {
+        width: 12vh;
+        height: 12vh;
+    }
+}
+
+@media (max-width: 1100px) {
+    #cpuButtons {
+        display: none;
+    }
+
     #playerButtons {
         margin-right: 0;
+    }
+
+    #cpuScore {
+        font-size: 3.5vh;
+    }
+}
+
+@media (max-width: 400px) {
+    header {
+        padding-bottom: 0;
+    }
+
+    #score {  
+        padding: 0;
+    }
+
+    .img-normal {
+        display: none;
+    }
+
+    .img-small {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+
+    button.game {
+        width: 28vw;
+    }
+
+    #cpuScore, #playerScore {
+        width: 13vh;
+        height: 20vh;
     }
 }
 
