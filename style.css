@@ -25,30 +25,15 @@ header {
 }
 
 header img {
-    width: 80%;
+    width: 75%;
 }
-
- /* header h1 {
-    font-size: 8vh;
-    font-weight: bold;
-   
-    background-color: rgb(230, 212, 114);
-    background-image: linear-gradient(90deg, rgb(246, 87, 10) 10%, rgb(230, 212, 114) 18%, rgb(141, 81, 3) 100%);
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    -moz-text-fill-color: transparent;
-
-    padding-bottom: 15vh;
-    
-}  */
 
 #score {  
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 10vh;
+    visibility: hidden;
 }
 
 #cpuScore, #playerScore {
@@ -95,6 +80,9 @@ header img {
     justify-content: center;   
 }
 
+#playerButtons div {
+    cursor: pointer; 
+}
 
 #playerButtons {
     margin-right: auto;
@@ -110,7 +98,7 @@ header img {
     border: 2px solid rgb(131, 131, 131);
     border-radius: 5px;
     background-color: rgb(94, 94, 94); 
-    cursor: pointer;  
+     
 }
 
 #playerButtons div:hover {
@@ -145,11 +133,40 @@ div.paper {
 }
 
 .start {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5vh;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 5s;
+}
 
+.modal {
+    color: rgb(247, 243, 223);
+    font-size: 5vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 30%;
+}
+
+.modal h3 {
+    padding-bottom: 5vh;
+}
+
+.modal-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 5s;
 }
 
 button.game {
@@ -163,7 +180,9 @@ button.game {
     background-color: rgb(83, 83, 83);
     font-family: 'Amatic SC', cursive;
     cursor: pointer;
+    margin-bottom: 10vh;
 }
+
 
 button.game:hover {
     background-color: rgb(39, 39, 39);
@@ -200,6 +219,27 @@ button.game:hover {
 
     #cpuScore {
         font-size: 3.5vh;
+    }
+}
+
+@media (max-width: 650px) {
+    header {
+        padding-bottom: 0;
+    }
+
+    #score {
+        padding: 0 3vh;
+    }
+    
+    .img-normal {
+        display: none;
+    }
+
+    .img-small {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        
     }
 }
 

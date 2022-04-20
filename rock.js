@@ -1,12 +1,18 @@
 const cpuScore = document.querySelector('#cpuScore p');
 const playerScore = document.querySelector('#playerScore p');
 const btnGame = document.querySelector('.game');
+const score = document.querySelector('#score');
+const items = document.querySelector('#items');
 const log = document.querySelector('.message');
 const sel = ['rock', 'paper', 'scissors'];
+const modal = document.querySelector('.start');
+const modalText = document.querySelector('.modal h3');
 
 let cpu = 0;
 let player = 0;
 let buttonsAdded = 0;
+
+
 
 /* Get computer choice randomly */
 
@@ -89,7 +95,9 @@ function updateScore(winner) {
 const startGame = function() {
     if (buttonsAdded === 0) addButtons();
     player = cpu = 0;
-    document.querySelector(`button.game`).style.visibility = "hidden";
+    score.style.visibility = 'visible';
+    items.style.visibility = 'visible';
+    modal.classList.add('modal-hidden');
     playerScore.textContent = player;
     cpuScore.textContent = cpu;      
     log.textContent = 'Choose wisely!';
@@ -121,14 +129,36 @@ const addButtons = function () {
 
 function isGameOver() {
     if (player === 5 || cpu === 5) {
-        if (player === 5) log.textContent = 'You won the game!';
-        else if (cpu === 5) log.textContent = 'You lost the game!';
-        btnGame.textContent = 'Restart Game';
-        document.querySelector(`button.game`).style.visibility = "visible";
-        btnGame.addEventListener('click', startGame);
+        if (player === 5) {
+            log.textContent = 'You won the game!';
+            setTimeout(() => { modalEndGame('player')}, 2000);
+        }
+        else if (cpu === 5) {
+            log.textContent = 'You lost the game!';
+            setTimeout(() => { modalEndGame('cpu')}, 2000);
+        }
         return true;
     }
     return false;
 }
 
-window.onload = () => startGame();
+function modalEndGame(winner) {
+    modal.classList.remove('modal-hidden');
+    score.style.visibility = 'hidden';
+    items.style.visibility = 'hidden';
+    if (winner === 'player') modalText.textContent = 'You won! Press Restart to play again';
+    if (winner === 'cpu') modalText.textContent = 'You lot the game! Press Restart to play again';
+    btnGame.textContent = 'Restart Game';
+}
+
+function modalStart() {
+    btnGame.addEventListener('click', startGame);
+    modal.classList.remove('modal-hidden');
+    items.style.visibility = 'visible';
+    modalText.textContent = "To play this game, select the item under Player score. When you're ready press the start button!";
+    setTimeout(() => { btnGame.style.visibility = 'visible'}, 1000);
+    btnGame.textContent = 'Start Game';
+}
+
+window.onload = () => modalStart();
+
