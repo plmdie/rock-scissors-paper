@@ -151,7 +151,7 @@ function modalStart() {
     items.style.display = 'none';
     score.style.display = 'none';
     footer.style.display = 'none';
-    modalText.textContent = "To play this game, select the item under Player score. When you're ready press the start button!";
+    modalText.textContent = "To play this game, select an item under Player score. When you're ready press the start button!";
     setTimeout(() => { btnGame.style.visibility = 'visible'}, 100);
     btnGame.textContent = 'Start Game';
 }
