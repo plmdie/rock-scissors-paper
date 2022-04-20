@@ -3,6 +3,7 @@ const playerScore = document.querySelector('#playerScore p');
 const btnGame = document.querySelector('.game');
 const score = document.querySelector('#score');
 const items = document.querySelector('#items');
+const footer = document.querySelector('#footer');
 const log = document.querySelector('.message');
 const sel = ['rock', 'paper', 'scissors'];
 const modal = document.querySelector('.start');
@@ -92,11 +93,12 @@ function updateScore(winner) {
 /* Start a new game */
 
 const startGame = function() {
-    if (buttonsAdded === 0) addButtons();
-    player = cpu = 0;
     btnGame.style.visibility = 'hidden'
     score.style.display = 'flex';
     items.style.display = 'flex';
+    footer.style.display = 'flex';
+    if (buttonsAdded === 0) addButtons();
+    player = cpu = 0;
     modal.classList.add('modal-hidden');
     playerScore.textContent = player;
     cpuScore.textContent = cpu;      
@@ -136,6 +138,7 @@ function modalEndGame(winner) {
     modal.classList.remove('modal-hidden');
     score.style.display = 'none';
     items.style.display = 'none';
+    footer.style.display = 'none';
     btnGame.style.visibility = 'visible'
     if (winner === 'player') modalText.textContent = 'You won! Press Restart to play again';
     if (winner === 'cpu') modalText.textContent = 'You lost the game! Press Restart to play again';
@@ -147,6 +150,7 @@ function modalStart() {
     modal.classList.remove('modal-hidden');
     items.style.display = 'none';
     score.style.display = 'none';
+    footer.style.display = 'none';
     modalText.textContent = "To play this game, select the item under Player score. When you're ready press the start button!";
     setTimeout(() => { btnGame.style.visibility = 'visible'}, 100);
     btnGame.textContent = 'Start Game';

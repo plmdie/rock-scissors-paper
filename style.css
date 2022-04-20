@@ -9,7 +9,8 @@
 }
 
 body {
-    padding: 2vh 5vw;
+    margin: 0;
+    padding-top: 1vh;
     background-color: rgb(43, 43, 43);
     font-family: 'Amatic SC', cursive;
 }
@@ -32,7 +33,7 @@ header img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10vh;
+    padding: 0 15vh;
 }
 
 #cpuScore, #playerScore {
@@ -121,7 +122,7 @@ div.paper {
     display: flex;
     justify-content: center;
     flex-wrap: wrap; 
-    padding: 5vh 10vh;
+    padding: 5vh 15vh;
 }
 
 #playerButtons, #cpuButtons   {
@@ -188,6 +189,37 @@ button.game:hover {
     -webkit-animation: animation 1000ms linear both;
     animation: animation 1000ms linear both;
 }
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(83, 83, 83);
+    height: 4vh;
+    width: 100%;
+    margin-top: auto;
+    color: rgb(247, 243, 223);
+    font-size: 2vh;
+    font-weight: bold;
+    gap: 1vw;
+}
+
+
+#footer img {
+    max-width: 100%;
+    max-height: 100%; 
+    display: block;  
+    transition: transform .7s ease-in-out;
+}
+
+#footer img:hover {
+    transform: rotate(360deg);
+    cursor: pointer;
+}
+
+
 
 @media (max-width: 1430px) {
     #playerButtons div, #cpuButtons div {
@@ -259,7 +291,7 @@ button.game:hover {
     }
 
     #score {  
-        padding: 0;
+        padding: 1vw;
     }
 
     .img-normal {
