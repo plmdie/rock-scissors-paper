@@ -22,8 +22,17 @@ header {
 header h1 {
     font-size: 8vh;
     font-weight: bold;
-    color:rgb(230, 212, 114);
+    /* color:rgb(230, 212, 114); */
+    background-color: rgb(230, 212, 114);
+    background-image: linear-gradient(90deg, rgb(246, 87, 10) 10%, rgb(230, 212, 114) 18%, rgb(141, 81, 3) 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    /* color: linear-gradient(90deg, rgba(246,87,10,1) 0%, rgba(230,212,114,1) 18%, rgba(255,143,0,1) 100%); */
     padding-bottom: 15vh;
+    
 }
 
 #score {  
@@ -85,7 +94,8 @@ header h1 {
     background-size: cover;
     border: 2px solid rgb(131, 131, 131);
     border-radius: 5px;
-    background-color: rgb(94, 94, 94);   
+    background-color: rgb(94, 94, 94); 
+    cursor: pointer;  
 }
 
 #playerButtons div:hover {
@@ -137,6 +147,7 @@ button.game {
     border-radius: 15px;
     background-color: rgb(83, 83, 83);
     font-family: 'Amatic SC', cursive;
+    cursor: pointer;
 }
 
 button.game:hover {

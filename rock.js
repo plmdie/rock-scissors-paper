@@ -1,16 +1,13 @@
 const cpuScore = document.querySelector('#cpuScore p');
 const playerScore = document.querySelector('#playerScore p');
-
 const btnGame = document.querySelector('.game');
 const log = document.querySelector('.message');
 const sel = ['rock', 'paper', 'scissors'];
 
-let run = 1;
-
-
 let cpu = 0;
 let player = 0;
 let buttonsAdded = 0;
+
 /* Get computer choice randomly */
 
 function computerPlay() {
@@ -23,11 +20,15 @@ function computerPlay() {
     }
 }
 
+/* Animate cpu choice items */
+
 function animateCpuButtons(cpuChoice) {
     const element = document.querySelector(`#cpuButtons .${sel[cpuChoice]}`);
     element.classList.add(`animation`);
     setTimeout(() => { element.classList.remove(`animation`)}, 500);
 }
+
+/* Animate a element */
 
 function animateElement(element) {
     const el = document.querySelector(element)
@@ -83,15 +84,18 @@ function updateScore(winner) {
     }
 }
 
+/* Start a new game */
+
 const startGame = function() {
     if (buttonsAdded === 0) addButtons();
     player = cpu = 0;
-    document.querySelector(`button.game`).style.visibility = "hidden";2
+    document.querySelector(`button.game`).style.visibility = "hidden";
     playerScore.textContent = player;
-    cpuScore.textContent = cpu;
-    log.style.fontSize = "12vh";        
+    cpuScore.textContent = cpu;      
     log.textContent = 'Choose wisely!';
 }
+
+/* Add player/computer items "buttons" */
 
 const addButtons = function () {
    
@@ -113,6 +117,7 @@ const addButtons = function () {
     buttonsAdded = 1; 
 } 
 
+/* Check if game is over */
 
 function isGameOver() {
     if (player === 5 || cpu === 5) {
@@ -126,4 +131,4 @@ function isGameOver() {
     return false;
 }
 
-startGame();
+window.onload = () => startGame();
