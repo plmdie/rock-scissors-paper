@@ -166,7 +166,7 @@ div.paper {
 .modal-hidden {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 5s;
+    
 }
 
 button.game {

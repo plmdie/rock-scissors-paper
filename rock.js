@@ -46,10 +46,10 @@ function animateElement(element) {
 /* Play single round */
 
 const playRound = function(playerSelection) {
+    if (isGameOver() && player === 5) modalEndGame('player'); 
+    if (isGameOver() && cpu === 5) modalEndGame('cpu'); 
     if (!isGameOver()) {
-        
         computerSelection = computerPlay(); 
-        let winner;
 
         if (playerSelection === computerSelection) {
             log.textContent = 'The game is tied.';
@@ -65,7 +65,6 @@ const playRound = function(playerSelection) {
             animateElement('#cpuScore');
         }
     } 
-    
     isGameOver();
 }   
 
@@ -95,6 +94,7 @@ function updateScore(winner) {
 const startGame = function() {
     if (buttonsAdded === 0) addButtons();
     player = cpu = 0;
+    btnGame.style.visibility = 'hidden'
     score.style.visibility = 'visible';
     items.style.visibility = 'visible';
     modal.classList.add('modal-hidden');
@@ -106,22 +106,18 @@ const startGame = function() {
 /* Add player/computer items "buttons" */
 
 const addButtons = function () {
-   
     const btnPlayer = document.querySelectorAll('#playerButtons, #cpuButtons'); 
     btnPlayer.forEach(el => {
         sel.forEach(item => {
             const items = document.createElement("div");
-            
             items.className = `${item}`;
             el.appendChild(items);
             el.querySelector(`.${item}`).style.backgroundImage = `url('./img/${item}.png')`;
-            
             if (el.id === 'playerButtons') {
             document.querySelector(`#playerButtons .${item}`).addEventListener('click', () => playRound(`${item}`));
             }
         });
     });
-
     buttonsAdded = 1; 
 } 
 
@@ -129,14 +125,8 @@ const addButtons = function () {
 
 function isGameOver() {
     if (player === 5 || cpu === 5) {
-        if (player === 5) {
-            log.textContent = 'You won the game!';
-            setTimeout(() => { modalEndGame('player')}, 2000);
-        }
-        else if (cpu === 5) {
-            log.textContent = 'You lost the game!';
-            setTimeout(() => { modalEndGame('cpu')}, 2000);
-        }
+        if (player === 5) log.textContent = 'You won the game!';
+        else if (cpu === 5) log.textContent = 'You lost the game!';
         return true;
     }
     return false;
@@ -146,8 +136,9 @@ function modalEndGame(winner) {
     modal.classList.remove('modal-hidden');
     score.style.visibility = 'hidden';
     items.style.visibility = 'hidden';
+    btnGame.style.visibility = 'visible'
     if (winner === 'player') modalText.textContent = 'You won! Press Restart to play again';
-    if (winner === 'cpu') modalText.textContent = 'You lot the game! Press Restart to play again';
+    if (winner === 'cpu') modalText.textContent = 'You lost the game! Press Restart to play again';
     btnGame.textContent = 'Restart Game';
 }
 
@@ -156,9 +147,10 @@ function modalStart() {
     modal.classList.remove('modal-hidden');
     items.style.visibility = 'visible';
     modalText.textContent = "To play this game, select the item under Player score. When you're ready press the start button!";
-    setTimeout(() => { btnGame.style.visibility = 'visible'}, 1000);
+    setTimeout(() => { btnGame.style.visibility = 'visible'}, 100);
     btnGame.textContent = 'Start Game';
 }
 
 window.onload = () => modalStart();
+
 
