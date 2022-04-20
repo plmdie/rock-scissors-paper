@@ -95,8 +95,8 @@ const startGame = function() {
     if (buttonsAdded === 0) addButtons();
     player = cpu = 0;
     btnGame.style.visibility = 'hidden'
-    score.style.visibility = 'visible';
-    items.style.visibility = 'visible';
+    score.style.display = 'flex';
+    items.style.display = 'flex';
     modal.classList.add('modal-hidden');
     playerScore.textContent = player;
     cpuScore.textContent = cpu;      
@@ -134,8 +134,8 @@ function isGameOver() {
 
 function modalEndGame(winner) {
     modal.classList.remove('modal-hidden');
-    score.style.visibility = 'hidden';
-    items.style.visibility = 'hidden';
+    score.style.display = 'none';
+    items.style.display = 'none';
     btnGame.style.visibility = 'visible'
     if (winner === 'player') modalText.textContent = 'You won! Press Restart to play again';
     if (winner === 'cpu') modalText.textContent = 'You lost the game! Press Restart to play again';
@@ -145,7 +145,8 @@ function modalEndGame(winner) {
 function modalStart() {
     btnGame.addEventListener('click', startGame);
     modal.classList.remove('modal-hidden');
-    items.style.visibility = 'visible';
+    items.style.display = 'none';
+    score.style.display = 'none';
     modalText.textContent = "To play this game, select the item under Player score. When you're ready press the start button!";
     setTimeout(() => { btnGame.style.visibility = 'visible'}, 100);
     btnGame.textContent = 'Start Game';

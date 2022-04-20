@@ -33,7 +33,6 @@ header img {
     justify-content: space-between;
     align-items: center;
     padding: 0 10vh;
-    visibility: hidden;
 }
 
 #cpuScore, #playerScore {
@@ -220,6 +219,9 @@ button.game:hover {
     #cpuScore {
         font-size: 3.5vh;
     }
+    button.game {
+        width: 17vw;
+    }
 }
 
 @media (max-width: 650px) {
@@ -240,6 +242,14 @@ button.game:hover {
         margin-left: auto;
         margin-right: auto;
         
+    }
+    
+    .modal {
+      width: 80%; 
+    }
+
+    button.game {
+        width: 25vw;
     }
 }
 
@@ -270,6 +280,10 @@ button.game:hover {
     #cpuScore, #playerScore {
         width: 13vh;
         height: 20vh;
+    }
+
+    h3 {
+        font-size: 4vh;
     }
 }
 
