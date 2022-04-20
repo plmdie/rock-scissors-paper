@@ -51,7 +51,6 @@ const playRound = function(playerSelection) {
     if (isGameOver() && cpu === 5) modalEndGame('cpu'); 
     if (!isGameOver()) {
         computerSelection = computerPlay(); 
-
         if (playerSelection === computerSelection) {
             log.textContent = 'The game is tied.';
         } 
@@ -134,6 +133,8 @@ function isGameOver() {
     return false;
 }
 
+/* Add modal to end game */
+
 function modalEndGame(winner) {
     modal.classList.remove('modal-hidden');
     score.style.display = 'none';
@@ -144,6 +145,8 @@ function modalEndGame(winner) {
     if (winner === 'cpu') modalText.textContent = 'You lost the game! Press Restart to play again';
     btnGame.textContent = 'Restart Game';
 }
+
+/* Add modal to start game */
 
 function modalStart() {
     btnGame.addEventListener('click', startGame);
