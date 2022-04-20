@@ -203,7 +203,6 @@ button.game:hover {
     color: rgb(247, 243, 223);
     font-size: 2vh;
     font-weight: bold;
-    gap: 1vw;
 }
 
 
@@ -219,7 +218,16 @@ button.game:hover {
     cursor: pointer;
 }
 
+#footer a {
+    padding: 0vw 5px;
+    text-decoration: none;
+    color: rgb(247, 243, 223);
+}
 
+#footer a:hover {
+    color: rgb(250, 209, 6);
+    font-size: 2.2vh;
+}
 
 @media (max-width: 1430px) {
     #playerButtons div, #cpuButtons div {
