@@ -85,7 +85,7 @@ header img {
 }
 
 #playerButtons {
-    margin-right: auto;
+    /* margin-right: auto; */
 }
 
 #playerButtons div, #cpuButtons div {
@@ -120,7 +120,7 @@ div.paper {
 
 #items {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap; 
     padding: 5vh 15vh;
 }
@@ -227,6 +227,13 @@ button.game:hover {
 #footer a:hover {
     color: rgb(250, 209, 6);
     font-size: 2.2vh;
+}
+
+@media (max-width: 2850px) {
+    #items {
+        justify-content: center;
+        gap: 15%;
+    }
 }
 
 @media (max-width: 1430px) {
