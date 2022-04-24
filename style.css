@@ -232,7 +232,10 @@ button.game:hover {
 @media (max-width: 2850px) {
     #items {
         justify-content: center;
-        gap: 15%;
+        gap: 15%;   
+    }
+    #playerButtons {
+        padding-bottom: 2%;
     }
 }
 
